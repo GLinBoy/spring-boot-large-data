@@ -1,8 +1,10 @@
 package com.glinboy.test.largedata.dto
 
+import com.fasterxml.jackson.annotation.JsonProperty
+
 data class User(
 
-    val _type: String,
+    @JsonProperty("_type") val type: String,
     val username: String,
     val id: Int,
     val displayname: String,
