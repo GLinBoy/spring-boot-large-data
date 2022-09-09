@@ -2,7 +2,7 @@ package com.glinboy.test.largedata.dto
 
 import com.fasterxml.jackson.annotation.JsonProperty
 
-data class InReplyToUser(
+data class InReplyToUserDTO(
 
     @JsonProperty("_type") val type: String,
     val username: String,
