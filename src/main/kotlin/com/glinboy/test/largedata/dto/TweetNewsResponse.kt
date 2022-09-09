@@ -1,8 +1,10 @@
 package com.glinboy.test.largedata.dto
 
+import com.fasterxml.jackson.annotation.JsonProperty
+
 data class TweetNewsResponse(
 
-    val _type: String,
+    @JsonProperty("_type") val type: String,
     val url: String,
     val date: String,
     val content: String,
