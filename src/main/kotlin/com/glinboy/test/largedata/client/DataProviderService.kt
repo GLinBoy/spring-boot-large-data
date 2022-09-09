@@ -1,7 +1,7 @@
 package com.glinboy.test.largedata.client
 
-import com.glinboy.test.largedata.dto.TweetNewsResponse
+import com.glinboy.test.largedata.dto.TweetNewsResponseDTO
 
 interface DataProviderService {
-    fun invokeApiProvider(): List<TweetNewsResponse>
+    fun invokeApiProvider(): List<TweetNewsResponseDTO>
 }
