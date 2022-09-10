@@ -1,16 +1,18 @@
-package com.glinboy.test.largedata.dto
+package com.glinboy.test.largedata.entity
 
-import com.fasterxml.jackson.annotation.JsonProperty
+import javax.persistence.Entity
+import javax.persistence.Id
 
+@Entity
 data class TweetNewsResponse(
 
-    @JsonProperty("_type") val type: String,
+    @Id val id: Int,
+    val type: String,
     val url: String,
     val date: String,
     val content: String,
     val renderedContent: String,
-    val id: Int,
-    val user: User,
+//    val user: User,
     val replyCount: Int,
     val retweetCount: Int,
     val likeCount: Int,
@@ -26,10 +28,10 @@ data class TweetNewsResponse(
     val retweetedTweet: String,
     val quotedTweet: String,
     val inReplyToTweetId: Int,
-    val inReplyToUser: InReplyToUser,
-    val mentionedUsers: List<MentionedUsers>,
-    val coordinates: Coordinates,
-    val place: Place,
+//    val inReplyToUser: InReplyToUser,
+//    val mentionedUsers: List<MentionedUsers>,
+//    val coordinates: Coordinates,
+//    val place: Place,
     val hashtags: String,
     val cashtags: String
 )
