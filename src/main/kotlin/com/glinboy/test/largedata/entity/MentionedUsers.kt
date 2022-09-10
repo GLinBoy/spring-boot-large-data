@@ -1,12 +1,14 @@
-package com.glinboy.test.largedata.dto
+package com.glinboy.test.largedata.entity
 
-import com.fasterxml.jackson.annotation.JsonProperty
+import javax.persistence.Entity
+import javax.persistence.Id
 
+@Entity
 data class MentionedUsers(
 
-    @JsonProperty("_type") val type: String,
+    @Id val id: Int,
+    val type: String,
     val username: String,
-    val id: Int,
     val displayname: String,
     val description: String,
     val rawDescription: String,
