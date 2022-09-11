@@ -30,7 +30,9 @@ data class TweetNewsResponse(
     val retweetedTweet: String,
     val quotedTweet: String,
     val inReplyToTweetId: Int,
-//    val inReplyToUser: InReplyToUser,
+    @OneToOne
+    @JoinColumn(name = "reply_to_user_id")
+    val inReplyToUser: InReplyToUser,
 //    val mentionedUsers: List<MentionedUsers>,
 //    val coordinates: Coordinates,
 //    val place: Place,
