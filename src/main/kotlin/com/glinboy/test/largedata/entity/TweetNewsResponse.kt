@@ -1,7 +1,6 @@
 package com.glinboy.test.largedata.entity
 
-import javax.persistence.Entity
-import javax.persistence.Id
+import javax.persistence.*
 
 @Entity
 data class TweetNewsResponse(
@@ -12,7 +11,10 @@ data class TweetNewsResponse(
     val date: String,
     val content: String,
     val renderedContent: String,
-//    val user: User,
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false,
+        foreignKey = ForeignKey(name = "fk_user_tweet"))
+    val user: User,
     val replyCount: Int,
     val retweetCount: Int,
     val likeCount: Int,
