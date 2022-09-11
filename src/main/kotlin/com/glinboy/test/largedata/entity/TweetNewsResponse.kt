@@ -38,7 +38,9 @@ data class TweetNewsResponse(
     @OneToOne
     @JoinColumn(name = "coordinates_id")
     val coordinates: Coordinates,
-//    val place: Place,
+    @OneToOne
+    @JoinColumn(name = "place_id")
+    val place: Place,
     val hashtags: String,
     val cashtags: String
 )
