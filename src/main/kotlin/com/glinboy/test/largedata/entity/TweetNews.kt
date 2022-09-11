@@ -3,7 +3,7 @@ package com.glinboy.test.largedata.entity
 import javax.persistence.*
 
 @Entity
-data class TweetNewsResponse(
+data class TweetNews(
 
     @Id val id: Int,
     val type: String,
