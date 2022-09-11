@@ -33,7 +33,8 @@ data class TweetNewsResponse(
     @OneToOne
     @JoinColumn(name = "reply_to_user_id")
     val inReplyToUser: InReplyToUser,
-//    val mentionedUsers: List<MentionedUsers>,
+    @OneToMany(fetch = FetchType.LAZY, orphanRemoval = true)
+    val mentionedUsers: List<MentionedUsers>,
 //    val coordinates: Coordinates,
 //    val place: Place,
     val hashtags: String,
