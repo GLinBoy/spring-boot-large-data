@@ -5,9 +5,12 @@ spring:
         username: sa
         password:
     jpa:
+        show-sql: true
         defer-datasource-initialization: true
         database-platform: org.hibernate.dialect.H2Dialect
-        show-sql: true
+        hibernate:
+            naming:
+                physical-strategy: com.glinboy.test.largedata.config.PrefixPhysicalNamingStrategy
     sql:
         init:
             platform: h2
