@@ -6,7 +6,7 @@ import javax.persistence.Id
 @Entity
 data class Place(
 
-    @Id val id: Int,
+    @Id val id: Long,
     val type: String,
     val fullName: String,
     val name: String,
