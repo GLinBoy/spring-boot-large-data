@@ -9,7 +9,7 @@ data class TweetNewsResponseDTO(
     val date: String,
     val content: String,
     val renderedContent: String,
-    val id: Int,
+    val id: Long,
     val user: UserDTO,
     val replyCount: Int,
     val retweetCount: Int,
