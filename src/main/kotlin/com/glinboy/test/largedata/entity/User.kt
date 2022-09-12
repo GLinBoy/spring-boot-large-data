@@ -6,7 +6,7 @@ import javax.persistence.Id
 @Entity
 data class User(
 
-    @Id val id: Int,
+    @Id val id: Long,
     val type: String,
     val username: String,
     val displayname: String,
