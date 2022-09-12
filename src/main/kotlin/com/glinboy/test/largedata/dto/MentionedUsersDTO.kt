@@ -6,7 +6,7 @@ data class MentionedUsersDTO(
 
     @JsonProperty("_type") val type: String,
     val username: String,
-    val id: Int,
+    val id: Long,
     val displayname: String,
     val description: String,
     val rawDescription: String,
