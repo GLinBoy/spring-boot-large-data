@@ -5,7 +5,7 @@ import javax.persistence.*
 @Entity
 data class TweetNews(
 
-    @Id val id: Int,
+    @Id val id: Long,
     val type: String,
     val url: String,
     val date: String,
