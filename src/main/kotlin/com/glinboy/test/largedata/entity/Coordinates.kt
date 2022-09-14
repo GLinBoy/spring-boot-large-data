@@ -6,8 +6,8 @@ import javax.persistence.Id
 @Entity
 data class Coordinates(
 
-    @Id val id: Long,
-    val type: String,
-    val longitude: Double,
-    val latitude: Double
+    @Id val id: Long?,
+    val type: String?,
+    val longitude: Double?,
+    val latitude: Double?
 )
