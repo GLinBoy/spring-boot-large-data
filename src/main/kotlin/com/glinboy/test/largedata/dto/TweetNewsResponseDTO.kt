@@ -26,7 +26,7 @@ data class TweetNewsResponseDTO(
     val retweetedTweet: String?,
     val quotedTweet: TweetNewsResponseDTO?,
     val inReplyToTweetId: Long?,
-    val inReplyToUser: InReplyToUserDTO?,
+    val inReplyToUser: UserDTO?,
     val mentionedUsers: List<MentionedUsersDTO>?,
     val coordinates: CoordinatesDTO?,
     val place: PlaceDTO?,
