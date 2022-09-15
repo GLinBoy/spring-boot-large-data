@@ -3,7 +3,6 @@ package com.glinboy.test.largedata.dto
 import com.fasterxml.jackson.annotation.JsonProperty
 
 data class TweetNewsResponseDTO(
-
     val id: Long?,
     @JsonProperty("_type") val type: String?,
     val url: String?,
@@ -27,7 +26,7 @@ data class TweetNewsResponseDTO(
     val quotedTweet: TweetNewsResponseDTO?,
     val inReplyToTweetId: Long?,
     val inReplyToUser: UserDTO?,
-    val mentionedUsers: List<MentionedUsersDTO>?,
+    val mentionedUsers: List<UserDTO>?,
     val coordinates: CoordinatesDTO?,
     val place: PlaceDTO?,
     val hashtags: List<String>?,
