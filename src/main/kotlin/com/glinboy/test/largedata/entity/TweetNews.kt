@@ -32,7 +32,7 @@ data class TweetNews(
     val inReplyToTweetId: Int,
     @OneToOne
     @JoinColumn(name = "reply_to_user_id")
-    val inReplyToUser: InReplyToUser,
+    val inReplyToUser: User,
     @OneToMany(fetch = FetchType.LAZY, orphanRemoval = true)
     val mentionedUsers: List<MentionedUsers>,
     @OneToOne
