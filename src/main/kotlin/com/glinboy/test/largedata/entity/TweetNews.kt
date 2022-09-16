@@ -34,7 +34,7 @@ data class TweetNews(
     @JoinColumn(name = "reply_to_user_id")
     val inReplyToUser: User,
     @OneToMany(fetch = FetchType.LAZY, orphanRemoval = true)
-    val mentionedUsers: List<MentionedUsers>,
+    val mentionedUsers: List<User>,
     @OneToOne
     @JoinColumn(name = "coordinates_id")
     val coordinates: Coordinates,
