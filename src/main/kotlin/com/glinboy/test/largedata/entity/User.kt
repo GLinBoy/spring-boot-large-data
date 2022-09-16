@@ -1,7 +1,6 @@
 package com.glinboy.test.largedata.entity
 
-import javax.persistence.Entity
-import javax.persistence.Id
+import javax.persistence.*
 
 @Entity
 data class User(
@@ -12,6 +11,8 @@ data class User(
     val displayname: String?,
     val description: String?,
     val rawDescription: String?,
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY,
+        cascade = [CascadeType.ALL], orphanRemoval = true)
     val descriptionUrls: List<DescriptionUrls>?,
     val verified: Boolean?,
     val created: String?,
