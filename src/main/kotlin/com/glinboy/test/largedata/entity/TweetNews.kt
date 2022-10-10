@@ -41,6 +41,7 @@ data class TweetNews(
     @OneToOne
     @JoinColumn(name = "place_id")
     val place: Place?,
-    val hashtags: String?,
+    @ElementCollection
+    val hashtags: List<String>?,
     val cashtags: String?
 )
