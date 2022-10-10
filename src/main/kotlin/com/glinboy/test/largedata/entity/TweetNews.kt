@@ -25,7 +25,8 @@ data class TweetNews(
     val sourceUrl: String?,
     val sourceLabel: String?,
     val outlinks: String?,
-    val tcooutlinks: String?,
+    @ElementCollection
+    val tcooutlinks: List<String>?,
     // FIXME
     val media: List<Media>?,
     val retweetedTweet: String?,
