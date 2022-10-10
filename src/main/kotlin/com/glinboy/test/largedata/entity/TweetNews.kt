@@ -19,7 +19,7 @@ data class TweetNews(
     val retweetCount: Int?,
     val likeCount: Int?,
     val quoteCount: Int?,
-    val conversationId: Int?,
+    val conversationId: Long?,
     val lang: String?,
     val source: String?,
     val sourceUrl: String?,
