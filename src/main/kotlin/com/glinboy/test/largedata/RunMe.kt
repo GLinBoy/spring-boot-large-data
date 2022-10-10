@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory
 import org.springframework.boot.context.event.ApplicationReadyEvent
 import org.springframework.context.event.EventListener
 import org.springframework.stereotype.Component
+import java.util.stream.Collectors
 
 @Component
 class RunMe(val dataProviderService: DataProviderService, val tweetNewsRepository: TweetNewsRepository) {
@@ -20,11 +21,40 @@ class RunMe(val dataProviderService: DataProviderService, val tweetNewsRepositor
         logger.info("---> Response size: {}", response.size)
         val dto = response[0]
         logger.info("---> DTO: {}", dto)
-//        val news = response.stream().map {
-//            logger.info("---> $it")
-//            mapper.map(it, TweetNews::class.java)
-//        }
-//            .collect(Collectors.toList())
+        val news: List<TweetNews> = response.stream().map {
+            logger.info("---> $it")
+            TweetNews(
+                it.id,
+                it.type,
+                it.url,
+                it.date,
+                it.content,
+                it.renderedContent,
+                null, // User
+                it.replyCount,
+                it.retweetCount,
+                it.likeCount,
+                it.quoteCount,
+                it.conversationId,
+                it.lang,
+                it.source,
+                it.sourceUrl,
+                it.sourceLabel,
+                it.outlinks,
+                it.tcooutlinks,
+                it.media,
+                it.retweetedTweet,
+                null, // quotedTweet
+                it.inReplyToTweetId,
+                null, // inReplyToUser
+                null, // mentionedUsers
+                null, // coordinates
+                null, // place
+                it.hashtags,
+                it.cashtags
+            )
+        }
+            .collect(Collectors.toList())
 //        tweetNewsRepository.saveAll(news)
     }
 }
