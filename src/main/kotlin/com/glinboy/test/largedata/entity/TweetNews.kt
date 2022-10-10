@@ -28,7 +28,10 @@ data class TweetNews(
     val tcooutlinks: String?,
     val media: String?,
     val retweetedTweet: String?,
-    val quotedTweet: String?,
+    @ManyToOne(cascade = [CascadeType.ALL])
+    @JoinColumn(name = "quoted_tweet_id",
+        foreignKey = ForeignKey(name = "fk_quoted_tweet"))
+    val quotedTweet: TweetNews?,
     val inReplyToTweetId: Long?,
     @OneToOne
     @JoinColumn(name = "reply_to_user_id")
