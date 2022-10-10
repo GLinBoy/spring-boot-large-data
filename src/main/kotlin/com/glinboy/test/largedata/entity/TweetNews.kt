@@ -26,7 +26,8 @@ data class TweetNews(
     val sourceLabel: String?,
     val outlinks: String?,
     val tcooutlinks: String?,
-    val media: String?,
+    // FIXME
+    val media: List<Media>?,
     val retweetedTweet: String?,
     @ManyToOne(cascade = [CascadeType.ALL])
     @JoinColumn(name = "quoted_tweet_id",
