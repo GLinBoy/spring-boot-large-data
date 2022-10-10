@@ -29,7 +29,7 @@ data class TweetNews(
     val media: String?,
     val retweetedTweet: String?,
     val quotedTweet: String?,
-    val inReplyToTweetId: Int?,
+    val inReplyToTweetId: Long?,
     @OneToOne
     @JoinColumn(name = "reply_to_user_id")
     val inReplyToUser: User?,
