@@ -24,34 +24,34 @@ class RunMe(val dataProviderService: DataProviderService, val tweetNewsRepositor
         val news: List<TweetNews> = response.stream().map {
             logger.info("---> $it")
             TweetNews(
-                it.id,
-                it.type,
-                it.url,
-                it.date,
-                it.content,
-                it.renderedContent,
+                it?.id,
+                it?.type,
+                it?.url,
+                it?.date,
+                it?.content,
+                it?.renderedContent,
                 null, // User
-                it.replyCount,
-                it.retweetCount,
-                it.likeCount,
-                it.quoteCount,
-                it.conversationId,
-                it.lang,
-                it.source,
-                it.sourceUrl,
-                it.sourceLabel,
-                it.outlinks,
-                it.tcooutlinks,
-                it.media,
-                it.retweetedTweet,
+                it?.replyCount,
+                it?.retweetCount,
+                it?.likeCount,
+                it?.quoteCount,
+                it?.conversationId,
+                it?.lang,
+                it?.source,
+                it?.sourceUrl,
+                it?.sourceLabel,
+                it?.outlinks,
+                it?.tcooutlinks,
+                null, // media,
+                it?.retweetedTweet,
                 null, // quotedTweet
-                it.inReplyToTweetId,
+                it?.inReplyToTweetId,
                 null, // inReplyToUser
                 null, // mentionedUsers
                 null, // coordinates
                 null, // place
-                it.hashtags,
-                it.cashtags
+                it?.hashtags,
+                it?.cashtags
             )
         }
             .collect(Collectors.toList())
