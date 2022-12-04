@@ -1,6 +1,6 @@
 package com.glinboy.test.largedata.entity
 
-import javax.persistence.*
+import jakarta.persistence.*
 
 @Entity
 data class TweetNews(
