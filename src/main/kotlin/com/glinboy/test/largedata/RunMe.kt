@@ -19,10 +19,7 @@ class RunMe(val dataProviderService: DataProviderService, val tweetNewsRepositor
         logger.info("Let's do some logic!")
         val response = dataProviderService.invokeApiProvider()
         logger.info("---> Response size: {}", response.size)
-        val dto = response[0]
-        logger.info("---> DTO: {}", dto)
         val news: List<TweetNews> = response.stream().map {
-            logger.info("---> $it")
             TweetNews(
                 it?.id,
                 it?.type,
