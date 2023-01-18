@@ -28,7 +28,7 @@ data class TweetNews(
     val outlinks: List<String>?,
     @ElementCollection
     val tcooutlinks: List<String>?,
-    // FIXME
+    @OneToMany(fetch = FetchType.LAZY, orphanRemoval = true)
     val media: List<Media>?,
     val retweetedTweet: String?,
     @ManyToOne(cascade = [CascadeType.ALL])
