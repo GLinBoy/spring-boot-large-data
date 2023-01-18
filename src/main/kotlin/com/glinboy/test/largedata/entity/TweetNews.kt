@@ -9,8 +9,8 @@ data class TweetNews(
     val type: String?,
     val url: String?,
     val date: String?,
-    val content: String?,
-    val renderedContent: String?,
+    @Column(length = 512) val content: String?,
+    @Column(length = 512) val renderedContent: String?,
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false,
         foreignKey = ForeignKey(name = "fk_user_tweet"))
