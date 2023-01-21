@@ -6,4 +6,11 @@ import org.springframework.stereotype.Service
 
 @Service
 class ReviewsServiceImpl(private val dataProviderService: DataProviderService): ReviewsServiceApi {
+    override fun fetchSampleReviews() {
+        dataProviderService.invokeApiProvider()
+    }
+
+    override fun fetchAllData() {
+        dataProviderService.invokeApiProvider()
+    }
 }
