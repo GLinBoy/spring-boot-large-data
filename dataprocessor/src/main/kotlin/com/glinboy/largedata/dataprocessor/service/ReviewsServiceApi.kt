@@ -1,4 +1,4 @@
-package com.glinboy.test.largedata.service
+package com.glinboy.largedata.dataprocessor.service
 
 interface ReviewsServiceApi {
     fun fetchSampleReviews()

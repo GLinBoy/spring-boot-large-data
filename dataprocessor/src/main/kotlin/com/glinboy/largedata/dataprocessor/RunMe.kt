@@ -1,13 +1,12 @@
-package com.glinboy.test.largedata
+package com.glinboy.largedata.dataprocessor
 
-import com.glinboy.test.largedata.client.DataProviderService
-import com.glinboy.test.largedata.dto.ReviewDTO
-import com.glinboy.test.largedata.entity.Review
-import com.glinboy.test.largedata.repository.ReviewRepository
+import com.glinboy.largedata.dataprocessor.client.DataProviderService
+import com.glinboy.largedata.dataprocessor.dto.ReviewDTO
+import com.glinboy.largedata.dataprocessor.entity.Review
+import com.glinboy.largedata.dataprocessor.repository.ReviewRepository
 import org.slf4j.LoggerFactory
 import org.springframework.boot.context.event.ApplicationReadyEvent
 import org.springframework.context.event.EventListener
-import org.springframework.stereotype.Component
 
 //@Component
 class RunMe(
@@ -26,13 +25,13 @@ class RunMe(
             all.map {
                 Review(
                     null,
-                    it?.reviewDate,
-                    it?.movieId,
-                    it?.userId,
-                    it?.isSpoiler,
-                    it?.reviewText,
-                    it?.rating,
-                    it?.reviewSummary
+                    it.reviewDate,
+                    it.movieId,
+                    it.userId,
+                    it.isSpoiler,
+                    it.reviewText,
+                    it.rating,
+                    it.reviewSummary
                 )
             }
         )

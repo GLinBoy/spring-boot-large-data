@@ -1,6 +1,6 @@
-package com.glinboy.test.largedata.web.rest
+package com.glinboy.largedata.dataprocessor.web.rest
 
-import com.glinboy.test.largedata.service.ReviewsServiceApi
+import com.glinboy.largedata.dataprocessor.service.ReviewsServiceApi
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping

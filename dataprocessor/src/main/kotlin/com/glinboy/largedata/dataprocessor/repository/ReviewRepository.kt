@@ -1,6 +1,6 @@
-package com.glinboy.test.largedata.repository
+package com.glinboy.largedata.dataprocessor.repository
 
-import com.glinboy.test.largedata.entity.Review
+import com.glinboy.largedata.dataprocessor.entity.Review
 import org.springframework.data.jpa.repository.JpaRepository
 
 interface ReviewRepository: JpaRepository<Review, Long> {

@@ -1,4 +1,4 @@
-package com.glinboy.test.largedata.entity
+package com.glinboy.largedata.dataprocessor.entity
 
 import jakarta.persistence.Column
 import jakarta.persistence.Entity

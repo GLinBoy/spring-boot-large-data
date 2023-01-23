@@ -1,4 +1,4 @@
-package com.glinboy.test.largedata.config
+package com.glinboy.largedata.dataprocessor.config
 
 import org.hibernate.boot.model.naming.Identifier
 import org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl

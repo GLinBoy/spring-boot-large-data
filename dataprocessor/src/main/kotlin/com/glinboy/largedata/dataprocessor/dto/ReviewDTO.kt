@@ -1,4 +1,4 @@
-package com.glinboy.test.largedata.dto
+package com.glinboy.largedata.dataprocessor.dto
 
 import com.fasterxml.jackson.databind.PropertyNamingStrategies
 import com.fasterxml.jackson.databind.annotation.JsonNaming

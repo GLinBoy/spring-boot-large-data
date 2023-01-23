@@ -10,7 +10,7 @@ spring:
         database-platform: org.hibernate.dialect.H2Dialect
         hibernate:
             naming:
-                physical-strategy: com.glinboy.test.largedata.config.PrefixPhysicalNamingStrategy
+                physical-strategy: com.glinboy.largedata.dataprocessor.config.PrefixPhysicalNamingStrategy
     sql:
         init:
             platform: h2

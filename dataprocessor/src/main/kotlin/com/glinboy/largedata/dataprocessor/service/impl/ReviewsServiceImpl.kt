@@ -1,7 +1,7 @@
-package com.glinboy.test.largedata.service.impl
+package com.glinboy.largedata.dataprocessor.service.impl
 
-import com.glinboy.test.largedata.client.DataProviderService
-import com.glinboy.test.largedata.service.ReviewsServiceApi
+import com.glinboy.largedata.dataprocessor.client.DataProviderService
+import com.glinboy.largedata.dataprocessor.service.ReviewsServiceApi
 import org.springframework.stereotype.Service
 
 @Service
