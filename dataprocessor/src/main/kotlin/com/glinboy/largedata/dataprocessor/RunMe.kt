@@ -1,7 +1,7 @@
 package com.glinboy.largedata.dataprocessor
 
 import com.glinboy.largedata.dataprocessor.client.DataProviderService
-import com.glinboy.largedata.dataprocessor.dto.ReviewDTO
+import com.glinboy.largedata.shared.dto.ReviewDTO
 import com.glinboy.largedata.dataprocessor.entity.Review
 import com.glinboy.largedata.dataprocessor.repository.ReviewRepository
 import org.slf4j.LoggerFactory

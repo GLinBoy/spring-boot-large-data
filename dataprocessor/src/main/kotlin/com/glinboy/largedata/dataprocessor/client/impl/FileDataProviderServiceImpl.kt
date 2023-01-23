@@ -3,7 +3,7 @@ package com.glinboy.largedata.dataprocessor.client.impl
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.fasterxml.jackson.module.kotlin.readValue
 import com.glinboy.largedata.dataprocessor.client.DataProviderService
-import com.glinboy.largedata.dataprocessor.dto.ReviewDTO
+import com.glinboy.largedata.shared.dto.ReviewDTO
 import org.springframework.stereotype.Service
 
 @Service
