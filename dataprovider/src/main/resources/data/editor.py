@@ -1,8 +1,8 @@
 import os
 
 
-main_file_name = 'news.json'
-mini_file_name = 'mini_news.json'
+main_file_name = 'IMDB_reviews.json'
+mini_file_name = 'IMDB_reviews.sample.json'
 final_prefix = 'final_'
 mini_file_lines = 100
 
@@ -39,5 +39,5 @@ def convert_to_json(file_name):
 
 
 if __name__ == '__main__':
-    generate_mini_file()
+#     generate_mini_file()
     convert_to_json(main_file_name)
