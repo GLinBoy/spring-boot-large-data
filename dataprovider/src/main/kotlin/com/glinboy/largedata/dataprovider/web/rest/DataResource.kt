@@ -3,6 +3,7 @@ package com.glinboy.largedata.dataprovider.web.rest
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.fasterxml.jackson.module.kotlin.readValue
 import com.glinboy.largedata.shared.dto.ReviewDTO
+import org.springframework.beans.factory.annotation.Value
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
@@ -14,11 +15,17 @@ class DataResource {
 
     val mapper = jacksonObjectMapper()
 
+    @Value("\${application.file-name.sample}")
+    lateinit var sampleFileName: String
+
+    @Value("\${application.file-name.main}")
+    lateinit var mainFileName: String
+
     @GetMapping("sample")
     fun returnSampleData(): ResponseEntity<List<ReviewDTO>> = ResponseEntity.ok(
         mapper.readValue(
         this::class.java
-            .getResource("/data/IMDB_reviews.sample.json")?.readText() ?: "[]"
+            .getResource("/data/$sampleFileName")?.readText() ?: "[]"
         )
     )
 
@@ -26,7 +33,7 @@ class DataResource {
     fun returnAllData(): ResponseEntity<List<ReviewDTO>> = ResponseEntity.ok(
         mapper.readValue(
         this::class.java
-            .getResource("/data/IMDB_reviews.sample.json")?.readText() ?: "[]"
+            .getResource("/data/$mainFileName")?.readText() ?: "[]"
         )
     )
 
