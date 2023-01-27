@@ -2,6 +2,6 @@ server:
     port: 8282
 
 application:
-    file-name:
-        main: IMDB_reviews.large.json
-        sample: IMDB_reviews.sample.json
+    file-path:
+        main: /data/IMDB_reviews.large.json
+        sample: /data/IMDB_reviews.sample.json
