@@ -21,3 +21,8 @@ management:
         web:
             exposure:
                 include: "*"
+
+application:
+    data-provider-url:
+        sample: "http://localhost:8282/api/data/sample"
+        all: "http://localhost:8282/api/data/all"
