@@ -1,6 +1,6 @@
 package com.glinboy.largedata.dataprocessor
 
-import com.glinboy.largedata.dataprocessor.client.DataProviderService
+import com.glinboy.largedata.dataprocessor.client.DataProviderServiceApi
 import com.glinboy.largedata.shared.dto.ReviewDTO
 import com.glinboy.largedata.dataprocessor.entity.Review
 import com.glinboy.largedata.dataprocessor.repository.ReviewRepository
@@ -10,7 +10,7 @@ import org.springframework.context.event.EventListener
 
 //@Component
 class RunMe(
-    private val dataProviderService: DataProviderService,
+    private val dataProviderServiceApi: DataProviderServiceApi,
     private val reviewRepository: ReviewRepository
 ) {
 
@@ -19,7 +19,7 @@ class RunMe(
     @EventListener(ApplicationReadyEvent::class)
     fun run() {
         logger.info("Let's do some logic!")
-        val all: List<ReviewDTO> = dataProviderService.invokeApiProvider()
+        val all: List<ReviewDTO> = dataProviderServiceApi.getSampleData()
         logger.info("---> Data count: {}", all.count())
         reviewRepository.saveAll(
             all.map {
