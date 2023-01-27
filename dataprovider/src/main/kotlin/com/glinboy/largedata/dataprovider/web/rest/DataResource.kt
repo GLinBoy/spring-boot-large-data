@@ -15,17 +15,17 @@ class DataResource {
 
     val mapper = jacksonObjectMapper()
 
-    @Value("\${application.file-name.sample}")
+    @Value("\${application.file-path.sample}")
     lateinit var sampleFileName: String
 
-    @Value("\${application.file-name.main}")
+    @Value("\${application.file-path.main}")
     lateinit var mainFileName: String
 
     @GetMapping("sample")
     fun returnSampleData(): ResponseEntity<List<ReviewDTO>> = ResponseEntity.ok(
         mapper.readValue(
         this::class.java
-            .getResource("/data/$sampleFileName")?.readText() ?: "[]"
+            .getResource(sampleFileName)?.readText() ?: "[]"
         )
     )
 
@@ -33,7 +33,7 @@ class DataResource {
     fun returnAllData(): ResponseEntity<List<ReviewDTO>> = ResponseEntity.ok(
         mapper.readValue(
         this::class.java
-            .getResource("/data/$mainFileName")?.readText() ?: "[]"
+            .getResource(mainFileName)?.readText() ?: "[]"
         )
     )
 
