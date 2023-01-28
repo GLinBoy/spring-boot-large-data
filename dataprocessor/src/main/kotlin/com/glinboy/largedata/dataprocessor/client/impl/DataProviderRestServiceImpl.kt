@@ -29,7 +29,9 @@ class DataProviderRestServiceImpl: DataProviderServiceApi {
     }
 
     override fun getAllData(): List<ReviewDTO> {
-        log.info(dataUrl)
-        return listOf()
+        val response = rt.exchange(dataUrl, HttpMethod.GET, null,
+            object : ParameterizedTypeReference<List<ReviewDTO>>() {})
+        log.info("Status code: ${response.statusCode}, Data count: ${response.body!!.size}")
+        return response.body!!
     }
 }
