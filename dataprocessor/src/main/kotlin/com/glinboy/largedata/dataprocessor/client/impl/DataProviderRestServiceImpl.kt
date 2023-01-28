@@ -4,7 +4,10 @@ import com.glinboy.largedata.dataprocessor.client.DataProviderServiceApi
 import com.glinboy.largedata.shared.dto.ReviewDTO
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Value
+import org.springframework.core.ParameterizedTypeReference
+import org.springframework.http.HttpMethod
 import org.springframework.stereotype.Service
+import org.springframework.web.client.RestTemplate
 
 @Service
 class DataProviderRestServiceImpl: DataProviderServiceApi {
@@ -19,8 +22,10 @@ class DataProviderRestServiceImpl: DataProviderServiceApi {
     lateinit var dataUrl: String
 
     override fun getSampleData(): List<ReviewDTO> {
-        log.info(dataSampleUrl)
-        return listOf()
+        val response = rt.exchange(dataSampleUrl, HttpMethod.GET, null,
+            object : ParameterizedTypeReference<List<ReviewDTO>>() {})
+        log.info("Status code: ${response.statusCode}, Data count: ${response.body!!.size}")
+        return response.body!!
     }
 
     override fun getAllData(): List<ReviewDTO> {
