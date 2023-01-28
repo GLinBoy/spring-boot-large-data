@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service
 class DataProviderRestServiceImpl: DataProviderServiceApi {
 
     private val log = LoggerFactory.getLogger(javaClass)
+    private val rt = RestTemplate()
 
     @Value("\${application.data-provider-url.sample}")
     lateinit var dataSampleUrl: String
