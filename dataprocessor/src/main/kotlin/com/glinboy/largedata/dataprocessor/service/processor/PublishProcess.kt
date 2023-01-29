@@ -1,4 +1,14 @@
 package com.glinboy.largedata.dataprocessor.service.processor
 
-class PublishProcess {
+import com.glinboy.largedata.shared.dto.ReviewDTO
+import org.springframework.kafka.core.KafkaTemplate
+
+class PublishProcess(private val kafkaTemplate: KafkaTemplate<Object, ReviewDTO>):
+    AbstractProcess<List<ReviewDTO>>() {
+
+    override fun job(reviewDTOs: List<ReviewDTO>) {
+        reviewDTOs.map {
+            kafkaTemplate.send("REVIEW-TOPIC", it)
+        }
+    }
 }
