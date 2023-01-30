@@ -1,7 +1,5 @@
 package com.glinboy.largedata.dataprocessor.service.processor
 
-import java.util.*
-
 abstract class AbstractProcess<T> {
     private lateinit var next: AbstractProcess<T>
 
@@ -11,8 +9,7 @@ abstract class AbstractProcess<T> {
 
     fun process(t: T) {
         this.job(t)
-        Optional.ofNullable(next)
-            .ifPresent { it.process(t) }
+        if(this::next.isInitialized) this.next.process(t)
     }
     abstract fun job(t: T)
 }
