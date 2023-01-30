@@ -23,6 +23,7 @@ management:
                 include: "*"
 
 application:
+    kafka-topic: REVIEW-TOPIC
     data-provider-url:
         sample: "http://localhost:8282/api/data/sample"
         all: "http://localhost:8282/api/data/all"
