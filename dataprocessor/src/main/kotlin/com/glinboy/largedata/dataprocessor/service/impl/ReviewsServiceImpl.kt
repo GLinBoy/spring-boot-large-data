@@ -16,6 +16,7 @@ class ReviewsServiceImpl(
     }
 
     override fun fetchAllData() {
-        dataProviderServiceApi.getAllData()
+        val reviewDTOs = dataProviderServiceApi.getAllData()
+        reviewHandler.getReviewHandlerChain().process(reviewDTOs)
     }
 }
