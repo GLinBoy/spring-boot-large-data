@@ -7,9 +7,9 @@ abstract class AbstractProcess<T> {
         this.next = process
     }
 
-    fun process(t: T) {
-        this.job(t)
-        if(this::next.isInitialized) this.next.process(t)
+    fun process(data: T) {
+        this.job(data)
+        if(this::next.isInitialized) this.next.process(data)
     }
-    abstract fun job(t: T)
+    abstract fun job(data: T)
 }
