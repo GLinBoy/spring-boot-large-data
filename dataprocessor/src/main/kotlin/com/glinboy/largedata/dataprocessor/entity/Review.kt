@@ -16,5 +16,5 @@ data class Review(
     val isSpoiler: Boolean? = null,
     @Column(columnDefinition="TEXT") val reviewText: String? = null,
     val rating: String? = null,
-    val reviewSummary: String? = null
+    @Column(columnDefinition="TEXT") val reviewSummary: String? = null
 )
