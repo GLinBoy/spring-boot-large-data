@@ -1,8 +1,8 @@
 package com.glinboy.largedata.dataprocessor.client
 
-import com.glinboy.largedata.shared.dto.ReviewDTO
+import java.io.File
 
 interface DataProviderServiceApi {
-    fun getSampleData(): List<ReviewDTO>
-    fun getAllData(): List<ReviewDTO>
+    fun getSampleData(): File
+    fun getAllData(): File
 }
