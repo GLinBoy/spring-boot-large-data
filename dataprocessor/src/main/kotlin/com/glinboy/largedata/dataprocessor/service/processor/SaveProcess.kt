@@ -6,22 +6,20 @@ import com.glinboy.largedata.shared.dto.ReviewDTO
 import org.springframework.stereotype.Component
 
 @Component
-class SaveProcess(private val reviewRepository: ReviewRepository) : AbstractProcess<List<ReviewDTO>>() {
+class SaveProcess(private val reviewRepository: ReviewRepository) : AbstractProcess<ReviewDTO>() {
 
-    override fun job(reviewDTOs: List<ReviewDTO>) {
-        reviewRepository.saveAll(
-            reviewDTOs.map {
-                Review(
-                    null,
-                    it.reviewDate,
-                    it.movieId,
-                    it.userId,
-                    it.isSpoiler,
-                    it.reviewText,
-                    it.rating,
-                    it.reviewSummary
-                )
-            }
+    override fun job(reviewDTO: ReviewDTO) {
+        reviewRepository.save(
+            Review(
+                null,
+                reviewDTO.reviewDate,
+                reviewDTO.movieId,
+                reviewDTO.userId,
+                reviewDTO.isSpoiler,
+                reviewDTO.reviewText,
+                reviewDTO.rating,
+                reviewDTO.reviewSummary
+            )
         )
     }
 }
