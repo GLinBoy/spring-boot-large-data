@@ -6,8 +6,8 @@ import org.springframework.stereotype.Component
 
 @Component
 class DeleteProcess(private val reviewRepository: ReviewRepository) :
-    AbstractProcess<List<ReviewDTO>>() {
-    override fun job(data: List<ReviewDTO>) {
+    AbstractProcess<ReviewDTO>() {
+    override fun job(data: ReviewDTO) {
         reviewRepository.deleteAllInBatch()
     }
 }
