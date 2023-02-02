@@ -1,0 +1,30 @@
+spring:
+    config:
+        activate:
+            on-profile: dev
+    datasource:
+        url: jdbc:h2:mem:large_data;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+        driver-class-name: org.h2.Driver
+        username: sa
+        password:
+    jpa:
+        show-sql: true
+        defer-datasource-initialization: true
+        database-platform: org.hibernate.dialect.H2Dialect
+        hibernate:
+            naming:
+                physical-strategy: com.glinboy.largedata.dataprocessor.config.PrefixPhysicalNamingStrategy
+    sql:
+        init:
+            platform: h2
+management:
+    endpoints:
+        web:
+            exposure:
+                include: "*"
+
+application:
+    kafka-topic: REVIEW-TOPIC
+    data-provider-url:
+        sample: "http://localhost:8282/api/data/sample"
+        all: "http://localhost:8282/api/data/all"
