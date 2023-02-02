@@ -5,13 +5,11 @@ import org.springframework.stereotype.Component
 
 @Component
 class ReviewHandler(
-    private val deleteProcess: DeleteProcess,
     private val saveProcess: SaveProcess,
     private val publishProcess: PublishProcess
 ) {
-    fun getReviewHandlerChain(): AbstractProcess<List<ReviewDTO>> {
-        deleteProcess.setNext(saveProcess)
+    fun getReviewHandlerChain(): AbstractProcess<ReviewDTO> {
         saveProcess.setNext(publishProcess)
-        return deleteProcess
+        return saveProcess
     }
 }
