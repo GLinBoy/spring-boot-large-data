@@ -3,14 +3,12 @@ package com.glinboy.largedata.dataprocessor.client.impl
 import com.glinboy.largedata.dataprocessor.client.DataProviderServiceApi
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.http.HttpMethod
-import org.springframework.stereotype.Service
 import org.springframework.util.StreamUtils
 import org.springframework.web.client.RestTemplate
 import java.io.File
 import java.io.FileOutputStream
 
-@Service
-class DataProviderRestServiceImpl: DataProviderServiceApi {
+class DataProviderRestServiceImpl : DataProviderServiceApi<File> {
 
     private val rt = RestTemplate()
 
