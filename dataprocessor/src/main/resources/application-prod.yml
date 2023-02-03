@@ -1,7 +1,30 @@
 spring:
     config:
         activate:
-            on-profile: dev
+            on-profile: prod
+    datasource:
+        url: jdbc:postgresql://localhost:5432/large_data
+        driver-class-name: org.postgresql.Driver
+        username: postgres
+        password: 1
+    jpa:
+        show-sql: false
+        open-in-view: false
+        defer-datasource-initialization: true
+        database-platform: org.hibernate.dialect.PostgreSQLDialect
+        hibernate:
+            ddl-auto: update
+            naming:
+                physical-strategy: com.glinboy.largedata.dataprocessor.config.PrefixPhysicalNamingStrategy
+    sql:
+        init:
+            platform: h2
+
+application:
+    kafka-topic: REVIEW-TOPIC
+    data-provider-url:
+        sample: "http://localhost:8282/api/data/sample"
+        all: "http://localhost:8282/api/data/all"
 
 logging:
     level:
