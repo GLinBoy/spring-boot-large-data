@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-@RequestMapping("reviews")
+@RequestMapping("/api/reviews")
 class ReviewsResource(private val reviewsService: ReviewsServiceApi) {
 
     @GetMapping("load/sample")
