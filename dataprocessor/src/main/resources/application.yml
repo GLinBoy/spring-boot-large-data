@@ -9,5 +9,5 @@ spring:
             key-serializer: org.apache.kafka.common.serialization.StringSerializer
             value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
 application:
-    mode: normal
-#    mode: memory-efficient
+#    mode: normal
+    mode: memory-efficient
