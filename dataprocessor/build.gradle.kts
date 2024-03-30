@@ -3,9 +3,9 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
 	id("org.springframework.boot") version "3.2.4"
 	id("io.spring.dependency-management") version "1.1.4"
-	kotlin("jvm") version "1.9.22"
-	kotlin("plugin.spring") version "1.9.22"
-	kotlin("plugin.jpa") version "1.9.22"
+	kotlin("jvm") version "1.9.23"
+	kotlin("plugin.spring") version "1.9.23"
+	kotlin("plugin.jpa") version "1.9.23"
 	id("com.github.ben-manes.versions") version "0.50.0"
     id("org.ec4j.editorconfig") version "0.0.3"
 }
