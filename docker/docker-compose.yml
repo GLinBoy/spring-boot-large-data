@@ -1,16 +1,16 @@
 version: "3.9"
 name: large-data-stack
 services:
-    zookeeper:
-        image: confluentinc/cp-zookeeper:7.9.2
+    ld_zookeeper:
         container_name: ld_zookeeper
+        image: confluentinc/cp-zookeeper:7.9.2
         environment:
             ZOOKEEPER_CLIENT_PORT: 2181
             ZOOKEEPER_TICK_TIME: 2000
 
-    kafka:
-        image: confluentinc/cp-kafka:7.9.2
+    ld_kafka:
         container_name: ld_kafka
+        image: confluentinc/cp-kafka:7.9.2
         ports:
             # To learn about configuring Kafka for access across networks see
             # https://www.confluent.io/blog/kafka-client-cannot-connect-to-broker-on-aws-on-docker-etc/
@@ -25,9 +25,10 @@ services:
             KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
             KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
             KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
-    postgresql:
-        image: postgres:17.5-alpine3.22
+
+    ld_postgresql:
         container_name: ld_postgresql
+        image: postgres:17.5-alpine3.22
         environment:
             POSTGRES_USER: postgres
             POSTGRES_PASSWORD: 1
@@ -35,6 +36,6 @@ services:
         ports:
             - "5432:5432"
         volumes:
-            - postgresql_data:/var/lib/postgresql/data
+            - ld_postgresql_data:/var/lib/postgresql/data
 volumes:
-    postgresql_data:
+    ld_postgresql_data:
