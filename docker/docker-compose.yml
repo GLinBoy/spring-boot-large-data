@@ -25,8 +25,8 @@ services:
             KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
             KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
             KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
-    postgrsql:
-        image: postgres:16.1-alpine3.19
+    postgresql:
+        image: postgres:17.5-alpine3.22
         container_name: ld_postgresql
         environment:
             POSTGRES_USER: postgres
