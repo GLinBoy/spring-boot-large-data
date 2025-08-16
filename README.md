@@ -1,6 +1,8 @@
 # Large Data Processing with Limited Memory
 
-Process ~1.5 GB of JSON data while keeping the Java application memory under ~750 MB. The repository contains two Spring Boot (Kotlin) applications that simulate a real scenario where you must ingest a very large third‑party API response efficiently and safely.
+Process ~1.5 GB of JSON data while keeping the Java application memory under ~750 MB. The repository contains two Spring
+Boot (Kotlin) applications that simulate a real scenario where you must ingest a very large third‑party API response
+efficiently and safely.
 
 ---
 
@@ -9,14 +11,16 @@ Process ~1.5 GB of JSON data while keeping the Java application memory under ~75
 There are two small programs:
 
 1. dataprovider – Pretends to be an external service. It simply returns a big file when you ask for it.
-2. dataprocessor – The real app. It requests that big file, replaces old records with new ones, and then broadcasts each review message to a Kafka stream for other systems to use.
+2. dataprocessor – The real app. It requests that big file, replaces old records with new ones, and then broadcasts each
+	 review message to a Kafka stream for other systems to use.
 
 Challenge: Load huge data without letting memory explode. Two strategies are implemented:
 
--   Normal mode: Load everything into memory first (simpler but heavy).
--   Memory‑efficient mode: Stream the file piece by piece from disk (slower, but low memory use).
+- Normal mode: Load everything into memory first (simpler but heavy).
+- Memory‑efficient mode: Stream the file piece by piece from disk (slower, but low memory use).
 
-You can switch modes with one property. The goal is to show why streaming design matters in cloud / Kubernetes environments with limited resources.
+You can switch modes with one property. The goal is to show why streaming design matters in cloud / Kubernetes
+environments with limited resources.
 
 ---
 
@@ -37,14 +41,15 @@ You can switch modes with one property. The goal is to show why streaming design
 				 DB (H2/PG)  Kafka (topic: REVIEW-TOPIC)
 ```
 
-Core pattern: Chain of Responsibility – each processing step is a handler in a pipeline (fetch, delete old data, persist new, publish to Kafka).
+Core pattern: Chain of Responsibility – each processing step is a handler in a pipeline (fetch, delete old data, persist
+new, publish to Kafka).
 
 ---
 
 ## Modules
 
 | Module        | Port | Purpose                                                       |
-| ------------- | ---- | ------------------------------------------------------------- |
+|---------------|------|---------------------------------------------------------------|
 | dataprovider  | 8282 | Serves large or sample JSON payloads from resources/data      |
 | dataprocessor | 8181 | Fetches data, processes it, stores it, publishes Kafka events |
 | shared        | –    | Shared classes/utilities                                      |
@@ -53,8 +58,8 @@ Core pattern: Chain of Responsibility – each processing step is a handler in a
 
 Endpoints:
 
--   `GET /api/data/sample` – Returns `IMDB_reviews.sample.json`
--   `GET /api/data/all` – Returns `IMDB_reviews.large.json` (stored compressed as `.xz` in Git)
+- `GET /api/data/sample` – Returns `IMDB_reviews.sample.json`
+- `GET /api/data/all` – Returns `IMDB_reviews.large.json` (stored compressed as `.xz` in Git)
 
 Utility script: `data/editor.py` – Can build a smaller sample file from the large one.
 
@@ -62,8 +67,8 @@ Utility script: `data/editor.py` – Can build a smaller sample file from the la
 
 Endpoints to trigger ingestion:
 
--   `POST /api/reviews/load/sample`
--   `POST /api/reviews/load/all`
+- `POST /api/reviews/load/sample`
+- `POST /api/reviews/load/all`
 
 Processing flow per trigger:
 
@@ -84,12 +89,12 @@ Current default: `memory-efficient` (see `dataprocessor/src/main/resources/appli
 
 ## Tech Stack
 
--   Kotlin + Spring Boot 3.5.x (Java 21)
--   Jackson streaming API
--   Kafka (Confluent images for local dev)
--   H2 (dev) / PostgreSQL (prod profile)
--   Gradle Kotlin DSL
--   Optional tooling: VisualVM for memory & GC observation
+- Kotlin + Spring Boot 3.5.x (Java 21)
+- Jackson streaming API
+- Kafka (Confluent images for local dev)
+- H2 (dev) / PostgreSQL (prod profile)
+- Gradle Kotlin DSL
+- Optional tooling: VisualVM for memory & GC observation
 
 ---
 
@@ -126,8 +131,9 @@ Create / refresh the sample file (optional):
 
 The helper script `editor.py` is very simple and does NOT take command‑line arguments. Open it if you want to change:
 
--   `main_file_name` (currently `IMDB_reviews.json` – you can rename the decompressed large file to this OR adjust the variable)
--   `mini_file_lines` (how many lines to copy for the sample)
+- `main_file_name` (currently `IMDB_reviews.json` – you can rename the decompressed large file to this OR adjust the
+	variable)
+- `mini_file_lines` (how many lines to copy for the sample)
 
 Typical workflow:
 
@@ -138,7 +144,8 @@ cp IMDB_reviews.large.json IMDB_reviews.json
 python editor.py
 ```
 
-Uncomment `generate_mini_file()` inside the script if you also want the truncated raw lines file; by default it wraps existing lines into a JSON array via `convert_to_json`.
+Uncomment `generate_mini_file()` inside the script if you also want the truncated raw lines file; by default it wraps
+existing lines into a JSON array via `convert_to_json`.
 
 ### 3. Infrastructure (Kafka & PostgreSQL)
 
@@ -150,10 +157,11 @@ docker compose -f docker/docker-compose.yml up -d
 
 Services exposed:
 
--   Kafka broker: `localhost:9092`
--   PostgreSQL: `localhost:5432` (user: postgres / password: 1 / db: large_data)
+- Kafka broker: `localhost:9092`
+- PostgreSQL: `localhost:5432` (user: postgres / password: 1 / db: large_data)
 
-If you only want to experiment with the ingestion logic and H2 in-memory DB, you can skip this and stay on the `dev` profile (default). Kafka publishing will still attempt to connect; start Kafka if you need to observe messages.
+If you only want to experiment with the ingestion logic and H2 in-memory DB, you can skip this and stay on the `dev`
+profile (default). Kafka publishing will still attempt to connect; start Kafka if you need to observe messages.
 
 ### 4. Build All Modules
 
@@ -234,7 +242,7 @@ kafka-console-consumer --bootstrap-server localhost:9092 --topic REVIEW-TOPIC --
 ## Endpoint Reference
 
 | Service       | Method | Path                     | Description                            |
-| ------------- | ------ | ------------------------ | -------------------------------------- |
+|---------------|--------|--------------------------|----------------------------------------|
 | dataprovider  | GET    | /api/data/sample         | Returns small JSON sample              |
 | dataprovider  | GET    | /api/data/all            | Returns full large JSON                |
 | dataprocessor | POST   | /api/reviews/load/sample | Triggers sample ingestion & publishing |
@@ -259,20 +267,22 @@ Each handler focuses on a single responsibility making it easy to swap implement
 ## Memory Strategy Explained
 
 | Aspect     | Normal Mode                         | Memory‑Efficient Mode            |
-| ---------- | ----------------------------------- | -------------------------------- |
+|------------|-------------------------------------|----------------------------------|
 | Loading    | Whole JSON array loaded into RAM    | Streamed via Jackson parser      |
 | Peak Heap  | High (scales with file size)        | Stable (bounded by object batch) |
 | Simplicity | Simple                              | Slightly more code               |
 | Speed      | Often faster for small/medium files | More I/O bound, lower footprint  |
 
-The streaming approach writes the raw HTTP response to a temporary file (or accesses as stream) and iterates tokens, constructing domain objects one at a time, persisting immediately – eliminating the need for a gigantic intermediate list.
+The streaming approach writes the raw HTTP response to a temporary file (or accesses as stream) and iterates tokens,
+constructing domain objects one at a time, persisting immediately – eliminating the need for a gigantic intermediate
+list.
 
 ---
 
 ## Profiles
 
 | Profile       | DB           | How to Activate                                                          |
-| ------------- | ------------ | ------------------------------------------------------------------------ |
+|---------------|--------------|--------------------------------------------------------------------------|
 | dev (default) | H2 in‑memory | Already active (`application-dev.yml`)                                   |
 | prod          | PostgreSQL   | `-Dspring.profiles.active=prod` or env var `SPRING_PROFILES_ACTIVE=prod` |
 
@@ -289,7 +299,7 @@ The streaming approach writes the raw HTTP response to a temporary file (or acce
 ## Troubleshooting
 
 | Problem                         | Cause                           | Fix                                         |
-| ------------------------------- | ------------------------------- | ------------------------------------------- |
+|---------------------------------|---------------------------------|---------------------------------------------|
 | 404 on /api/data/all            | Large file not decompressed     | Decompress `.xz` file                       |
 | OutOfMemoryError in normal mode | File exceeds heap               | Use `memory-efficient` mode or raise `-Xmx` |
 | Kafka connection errors         | Kafka not started               | Run docker compose stack                    |
@@ -301,10 +311,10 @@ Logs contain detailed step markers; enable more logs by adjusting levels in `app
 
 ## Future Ideas
 
--   Add backpressure & rate limiting
--   Add metrics (Micrometer, Prometheus)
--   Add retry & circuit breaker (Resilience4j)
--   Compress Kafka messages or use Avro/Schema Registry
+- Add backpressure & rate limiting
+- Add metrics (Micrometer, Prometheus)
+- Add retry & circuit breaker (Resilience4j)
+- Compress Kafka messages or use Avro/Schema Registry
 
 ---
 
@@ -316,7 +326,9 @@ This project uses a dataset derived from the IMDB Spoiler Dataset available on K
 
 - IMDB Spoiler Dataset: https://www.kaggle.com/datasets/rmisra/imdb-spoiler-dataset
 
-The dataset is provided under the Creative Commons Attribution 4.0 International (CC BY 4.0) license. That license applies ONLY to the dataset contents and NOT to the source code in this repository. Before redistributing or using the data commercially, review the Kaggle page and the full CC BY 4.0 terms: https://creativecommons.org/licenses/by/4.0/
+The dataset is provided under the Creative Commons Attribution 4.0 International (CC BY 4.0) license. That license
+applies ONLY to the dataset contents and NOT to the source code in this repository. Before redistributing or using the
+data commercially, review the Kaggle page and the full CC BY 4.0 terms: https://creativecommons.org/licenses/by/4.0/
 
 Proper citation example (adapt as needed):
 

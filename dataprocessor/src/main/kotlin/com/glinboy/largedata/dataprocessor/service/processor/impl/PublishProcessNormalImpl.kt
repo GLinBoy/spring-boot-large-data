@@ -6,15 +6,15 @@ import org.springframework.beans.factory.annotation.Value
 import org.springframework.kafka.core.KafkaTemplate
 
 class PublishProcessNormalImpl(private val kafkaTemplate: KafkaTemplate<String, ReviewDTO>) :
-    PublishProcess<List<ReviewDTO>>,
-    AbstractProcess<List<ReviewDTO>>() {
+	PublishProcess<List<ReviewDTO>>,
+	AbstractProcess<List<ReviewDTO>>() {
 
-    @Value("\${application.kafka-topic}")
-    lateinit var topic: String
+	@Value("\${application.kafka-topic}")
+	lateinit var topic: String
 
-    override fun job(reviewDTOs: List<ReviewDTO>) {
-        reviewDTOs.map {
-            kafkaTemplate.send(topic, it)
-        }
-    }
+	override fun job(reviewDTOs: List<ReviewDTO>) {
+		reviewDTOs.map {
+			kafkaTemplate.send(topic, it)
+		}
+	}
 }

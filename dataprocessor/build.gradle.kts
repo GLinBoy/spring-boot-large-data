@@ -5,7 +5,7 @@ plugins {
 	kotlin("plugin.spring") version "1.9.25"
 	kotlin("plugin.jpa") version "1.9.25"
 	id("com.github.ben-manes.versions") version "0.50.0"
-    id("org.ec4j.editorconfig") version "0.0.3"
+	id("org.ec4j.editorconfig") version "0.0.3"
 }
 
 group = "com.glinboy.test"
@@ -28,7 +28,7 @@ repositories {
 }
 
 dependencies {
-    api(project(":shared"))
+	api(project(":shared"))
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 	implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
 	implementation("org.springframework.boot:spring-boot-starter-web")

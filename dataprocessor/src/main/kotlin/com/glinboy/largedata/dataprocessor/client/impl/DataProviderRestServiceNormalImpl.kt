@@ -9,23 +9,25 @@ import org.springframework.web.client.RestTemplate
 
 class DataProviderRestServiceNormalImpl : DataProviderServiceApi<List<ReviewDTO>> {
 
-    private val rt = RestTemplate()
+	private val rt = RestTemplate()
 
-    @Value("\${application.data-provider-url.sample}")
-    lateinit var dataSampleUrl: String
+	@Value("\${application.data-provider-url.sample}")
+	lateinit var dataSampleUrl: String
 
-    @Value("\${application.data-provider-url.all}")
-    lateinit var dataUrl: String
+	@Value("\${application.data-provider-url.all}")
+	lateinit var dataUrl: String
 
-    override fun getSampleData(): List<ReviewDTO> {
-        val response = rt.exchange(dataSampleUrl, HttpMethod.GET, null,
-            object : ParameterizedTypeReference<List<ReviewDTO>>() {})
-        return response.body!!
-    }
+	override fun getSampleData(): List<ReviewDTO> {
+		val response = rt.exchange(
+			dataSampleUrl, HttpMethod.GET, null,
+			object : ParameterizedTypeReference<List<ReviewDTO>>() {})
+		return response.body!!
+	}
 
-    override fun getAllData(): List<ReviewDTO> {
-        val response = rt.exchange(dataUrl, HttpMethod.GET, null,
-            object : ParameterizedTypeReference<List<ReviewDTO>>() {})
-        return response.body!!
-    }
+	override fun getAllData(): List<ReviewDTO> {
+		val response = rt.exchange(
+			dataUrl, HttpMethod.GET, null,
+			object : ParameterizedTypeReference<List<ReviewDTO>>() {})
+		return response.body!!
+	}
 }

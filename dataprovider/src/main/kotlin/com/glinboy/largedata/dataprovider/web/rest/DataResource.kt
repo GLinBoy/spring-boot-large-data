@@ -13,28 +13,28 @@ import org.springframework.web.bind.annotation.RestController
 @RequestMapping("/api/data")
 class DataResource {
 
-    val mapper = jacksonObjectMapper()
+	val mapper = jacksonObjectMapper()
 
-    @Value("\${application.file-path.sample}")
-    lateinit var sampleFileName: String
+	@Value("\${application.file-path.sample}")
+	lateinit var sampleFileName: String
 
-    @Value("\${application.file-path.main}")
-    lateinit var mainFileName: String
+	@Value("\${application.file-path.main}")
+	lateinit var mainFileName: String
 
-    @GetMapping("sample")
-    fun returnSampleData(): ResponseEntity<List<ReviewDTO>> = ResponseEntity.ok(
-        mapper.readValue(
-        this::class.java
-            .getResource(sampleFileName)?.readText() ?: "[]"
-        )
-    )
+	@GetMapping("sample")
+	fun returnSampleData(): ResponseEntity<List<ReviewDTO>> = ResponseEntity.ok(
+		mapper.readValue(
+			this::class.java
+				.getResource(sampleFileName)?.readText() ?: "[]"
+		)
+	)
 
-    @GetMapping("all")
-    fun returnAllData(): ResponseEntity<List<ReviewDTO>> = ResponseEntity.ok(
-        mapper.readValue(
-        this::class.java
-            .getResource(mainFileName)?.readText() ?: "[]"
-        )
-    )
+	@GetMapping("all")
+	fun returnAllData(): ResponseEntity<List<ReviewDTO>> = ResponseEntity.ok(
+		mapper.readValue(
+			this::class.java
+				.getResource(mainFileName)?.readText() ?: "[]"
+		)
+	)
 
 }

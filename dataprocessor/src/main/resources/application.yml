@@ -1,13 +1,13 @@
 server:
-    port: 8181
+  port: 8181
 spring:
-    profiles:
-        active:
-            - dev
-    kafka:
-        producer:
-            key-serializer: org.apache.kafka.common.serialization.StringSerializer
-            value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+  profiles:
+    active:
+      - dev
+  kafka:
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
 application:
-#    mode: normal
-    mode: memory-efficient
+  #    mode: normal
+  mode: memory-efficient

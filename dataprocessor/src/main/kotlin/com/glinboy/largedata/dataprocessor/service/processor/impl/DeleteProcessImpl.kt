@@ -5,9 +5,9 @@ import com.glinboy.largedata.dataprocessor.service.processor.DeleteProcess
 import com.glinboy.largedata.shared.dto.ReviewDTO
 
 class DeleteProcessImpl(private val reviewRepository: ReviewRepository) :
-    DeleteProcess<ReviewDTO>,
-    AbstractProcess<ReviewDTO>() {
-    override fun job(data: ReviewDTO) {
-        reviewRepository.deleteAllInBatch()
-    }
+	DeleteProcess<ReviewDTO>,
+	AbstractProcess<ReviewDTO>() {
+	override fun job(data: ReviewDTO) {
+		reviewRepository.deleteAllInBatch()
+	}
 }

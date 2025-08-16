@@ -8,10 +8,10 @@ import org.springframework.stereotype.Component
 @Component
 class RunMe {
 
-    private val logger = LoggerFactory.getLogger(javaClass)
+	private val logger = LoggerFactory.getLogger(javaClass)
 
-    @EventListener(ApplicationReadyEvent::class)
-    fun run() {
-        logger.info("Let's do some logic!")
-    }
+	@EventListener(ApplicationReadyEvent::class)
+	fun run() {
+		logger.info("Let's do some logic!")
+	}
 }

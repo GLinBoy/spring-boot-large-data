@@ -7,11 +7,11 @@ import com.glinboy.largedata.dataprocessor.service.processor.SaveProcess
 import com.glinboy.largedata.shared.dto.ReviewDTO
 
 class ReviewHandlerImpl(
-    private val saveProcess: SaveProcess<ReviewDTO>,
-    private val publishProcess: PublishProcess<ReviewDTO>
+	private val saveProcess: SaveProcess<ReviewDTO>,
+	private val publishProcess: PublishProcess<ReviewDTO>
 ) : ReviewHandler<Process<ReviewDTO>, ReviewDTO> {
-    override fun getReviewHandlerChain(): Process<ReviewDTO> {
-        saveProcess.setNext(publishProcess)
-        return saveProcess
-    }
+	override fun getReviewHandlerChain(): Process<ReviewDTO> {
+		saveProcess.setNext(publishProcess)
+		return saveProcess
+	}
 }
