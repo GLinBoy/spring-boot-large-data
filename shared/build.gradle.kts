@@ -1,7 +1,5 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
 plugins {
-	kotlin("jvm") version "1.9.25"
+	kotlin("jvm") version "2.2.21"
 }
 
 group = "com.glinboy.largedata"
@@ -9,7 +7,7 @@ version = "0.0.1-SNAPSHOT"
 
 java {
 	toolchain {
-		languageVersion = JavaLanguageVersion.of(21)
+		languageVersion = JavaLanguageVersion.of(24)
 	}
 }
 
@@ -21,9 +19,9 @@ dependencies {
 	implementation("com.fasterxml.jackson.core:jackson-databind:2.19.2")
 }
 
-tasks.withType<KotlinCompile> {
-	kotlinOptions {
-		freeCompilerArgs = listOf("-Xjsr305=strict")
+kotlin {
+	compilerOptions {
+		freeCompilerArgs.addAll("-Xjsr305=strict", "-Xannotation-default-target=param-property")
 	}
 }
 
