@@ -1,6 +1,10 @@
 server:
   port: 8282
 
+spring:
+  application:
+    name: LargeData-DataProvider-Module
+
 application:
   file-path:
     main: /data/IMDB_reviews.large.json
