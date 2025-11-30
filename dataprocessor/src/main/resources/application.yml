@@ -1,6 +1,8 @@
 server:
   port: 8181
 spring:
+  application:
+    name: LargeData-DataProcessor-Module
   profiles:
     active:
       - dev
