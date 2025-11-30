@@ -1,5 +1,6 @@
 package com.glinboy.largedata.dataprocessor.config
 
+import com.fasterxml.jackson.databind.ObjectMapper
 import com.glinboy.largedata.dataprocessor.client.DataProviderServiceApi
 import com.glinboy.largedata.dataprocessor.client.impl.DataProviderRestServiceImpl
 import com.glinboy.largedata.dataprocessor.client.impl.DataProviderRestServiceNormalImpl
@@ -7,6 +8,7 @@ import com.glinboy.largedata.dataprocessor.repository.ReviewRepository
 import com.glinboy.largedata.dataprocessor.service.processor.*
 import com.glinboy.largedata.dataprocessor.service.processor.impl.*
 import com.glinboy.largedata.shared.dto.ReviewDTO
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.kafka.core.KafkaTemplate
@@ -14,6 +16,10 @@ import java.io.File
 
 @Configuration
 class BeanConfiguration {
+
+	@Bean
+	@ConditionalOnMissingBean
+	fun objectMapper(): ObjectMapper = ObjectMapper().findAndRegisterModules()
 
 
 	@Bean
