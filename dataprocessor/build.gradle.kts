@@ -1,9 +1,9 @@
 plugins {
 	id("org.springframework.boot") version "4.1.0"
 	id("io.spring.dependency-management") version "1.1.7"
-	kotlin("jvm") version "2.2.21"
-	kotlin("plugin.spring") version "2.2.21"
-	kotlin("plugin.jpa") version "2.2.21"
+	kotlin("jvm") version "2.3.21"
+	kotlin("plugin.spring") version "2.3.21"
+	kotlin("plugin.jpa") version "2.3.21"
 	id("com.github.ben-manes.versions") version "0.53.0"
 	id("org.ec4j.editorconfig") version "0.1.0"
 }
