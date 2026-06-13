@@ -4,7 +4,7 @@ plugins {
 	kotlin("jvm") version "2.3.21"
 	kotlin("plugin.spring") version "2.3.21"
 	kotlin("plugin.jpa") version "2.3.21"
-	id("com.github.ben-manes.versions") version "0.53.0"
+	id("com.github.ben-manes.versions") version "0.54.0"
 	id("org.ec4j.editorconfig") version "0.1.0"
 }
 
