@@ -15,7 +15,7 @@ repositories {
 	mavenCentral()
 }
 
-val jacksonVersion = "2.20.1"
+val jacksonVersion = "2.22.0"
 
 dependencies {
 	implementation("com.fasterxml.jackson.core:jackson-databind:$jacksonVersion")
