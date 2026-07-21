@@ -89,7 +89,7 @@ Current default: `memory-efficient` (see `dataprocessor/src/main/resources/appli
 
 ## Tech Stack
 
-- Kotlin + Spring Boot 3.5.x (Java 21)
+- Kotlin + Spring Boot 4.1.x (Java 25)
 - Jackson streaming API
 - Kafka (Confluent images for local dev)
 - H2 (dev) / PostgreSQL (prod profile)
